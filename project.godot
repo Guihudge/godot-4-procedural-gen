@@ -27,3 +27,4 @@ version_control/autoload_on_startup=true
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+driver/threads/thread_model=0
