@@ -17,14 +17,17 @@ func _ready():
 	altitude.seed = randi()
 	altitude.frequency = 0.005
 	Performance.add_custom_monitor("Generation/Generated chunck", get_generated_chunk)
-	thread = Thread.new()
-	thread.start(generate_chunck_in_view)
+	
+	#thread = Thread.new()
+	#thread.start(generate_chunck_in_view)
+	
 
 
 func _process(delta):
-	if not thread.is_alive():
-		thread.wait_to_finish()
-		thread.start(generate_chunck_in_view)
+	generate_chunck_in_view()
+	#if not thread.is_alive():
+	#	thread.wait_to_finish()
+	#	thread.start(generate_chunck_in_view)
 
 func generate_chunck_in_view():
 	var position = player.position
