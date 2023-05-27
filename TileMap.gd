@@ -5,7 +5,7 @@ var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 
 var chunck_size  = 8
-var view_distance = 8
+var view_distance = 16
 var chunck_genrated = 0
 var chunck_genrated_bis = 0
 var nbThread = 4
@@ -103,14 +103,9 @@ func generate_chunk(chunck_pos_id):
 					set_cell(0, Vector2i(local_x, local_y), 0, Vector2(3, round((temp+10)/5)))
 				else:
 					set_cell(0, Vector2i(local_x, local_y), 0, Vector2(round((moist+10)/5), round((temp+10)/5)))
-				
-				if get_cell_tile_data(0, Vector2i(local_x, local_y)) != null:
-					generated_tiles += 1
 				mutex.unlock()
 		
 		chunck_genrated_bis += 1
-		if generated_tiles != chunck_size* chunck_size:
-			print("Error in chunk: ", chunck_pos, " generated ", generated_tiles, " tiles of ", chunck_size* chunck_size)
 		
 
 func get_chunk_to_generate():
